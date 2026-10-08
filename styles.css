@@ -1,0 +1,371 @@
+/* ==========================================================================
+   VARIABLES GLOBALES & TEMAS
+   ========================================================================== */
+:root {
+    /* Paleta de colores principal */
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-light: #eff6ff;
+    
+    /* Estados de asistencia */
+    --success-color: #10b981;
+    --success-hover: #059669;
+    --success-light: #ecfdf5;
+    
+    --danger-color: #ef4444;
+    --danger-hover: #dc2626;
+    --danger-light: #fef2f2;
+    
+    --warning-color: #f59e0b;
+    --warning-hover: #d97706;
+    --warning-light: #fffbeb;
+
+    /* Neutros y Fondos */
+    --bg-main: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-hover: #cbd5e1;
+
+    /* Sombras y Elevación */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+    /* Radios de borde */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    /* Transiciones */
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   RESETEO BASE & ESTILOS GENERALES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    padding: 32px 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   ENCABEZADO
+   ========================================================================== */
+header {
+    margin-bottom: 28px;
+}
+
+header h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   TARJETAS Y SECCIONES (CARDS)
+   ========================================================================== */
+.card, .controls-card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+    transition: var(--transition-fast);
+}
+
+.card:hover, .controls-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.form-card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Layout de Formularios */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Inputs, Selects y Controles */
+input[type="text"], 
+input[type="date"], 
+select {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+input[type="text"]:focus, 
+input[type="date"]:focus, 
+select:focus {
+    background-color: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--primary-light);
+}
+
+input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* ==========================================================================
+   TABLA DE ALUMNOS & ASISTENCIA
+   ========================================================================== */
+.table-container {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden; /* Mantiene bordes redondeados */
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+th {
+    background-color: #f8fafc;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition: var(--transition-fast);
+}
+
+tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Radio Buttons de Asistencia Estilizados */
+.attendance-options {
+    display: inline-flex;
+    background-color: #f1f5f9;
+    padding: 4px;
+    border-radius: var(--radius-md);
+    gap: 4px;
+}
+
+.attendance-options label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    color: var(--text-secondary);
+}
+
+.attendance-options input[type="radio"] {
+    accent-color: var(--primary-color);
+}
+
+/* Resaltado dinámico según selección de asistencia */
+.attendance-options label:has(input[value="PRESENTE"]:checked) {
+    background-color: var(--success-light);
+    color: var(--success-hover);
+}
+
+.attendance-options label:has(input[value="AUSENTE"]:checked) {
+    background-color: var(--danger-light);
+    color: var(--danger-hover);
+}
+
+.attendance-options label:has(input[value="TARDE"]:checked) {
+    background-color: var(--warning-light);
+    color: var(--warning-hover);
+}
+
+.input-obs {
+    padding: 8px 12px;
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   BOTONES & ACCIONES
+   ========================================================================== */
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    box-shadow: var(--shadow-sm);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* Estilos por categoría de botón */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+}
+.btn-success:hover {
+    background-color: var(--success-hover);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-warning {
+    background-color: #fef3c7;
+    color: var(--warning-hover);
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+.btn-warning:hover {
+    background-color: #fde68a;
+}
+
+.btn-danger {
+    background-color: #fee2e2;
+    color: var(--danger-hover);
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+.btn-danger:hover {
+    background-color: #fca5a5;
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: var(--text-secondary);
+}
+.btn-secondary:hover {
+    background-color: #cbd5e1;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ==========================================================================
+   DISEÑO ADAPTABLE (RESPONSIVE)
+   ========================================================================== */
+@media (max-width: 768px) {
+    body {
+        padding: 16px 8px;
+    }
+
+    .card, .controls-card {
+        padding: 16px;
+    }
+
+    .attendance-options {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .attendance-options label {
+        justify-content: flex-start;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+    }
+}

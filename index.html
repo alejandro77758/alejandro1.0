@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Asistencia Escolar y Gestión de Alumnos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Control de Asistencia y Alumnos</h1>
+            <p>Gestión integral de alumnos y registros diarios</p>
+        </header>
+
+        <!-- Formulario para Agregar / Editar Alumno -->
+        <div class="card form-card">
+            <h2 id="form-title">Agregar Nuevo Alumno</h2>
+            <form id="alumno-form">
+                <input type="hidden" id="alumno-id" value="">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="legajo">Legajo:</label>
+                        <input type="text" id="legajo" placeholder="Ej: ALU-004" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" placeholder="Ej: Ana Martinez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-curso">Curso:</label>
+                        <select id="form-curso" required>
+                            <option value="1A">1º Año - A</option>
+                            <option value="2A">2º Año - A</option>
+                            <option value="3A">3º Año - A</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="btn-guardar-alumno" class="btn-success">Guardar Alumno</button>
+                    <button type="button" id="btn-cancelar" class="btn-secondary" style="display: none;">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Filtros y Controles de Asistencia -->
+        <div class="controls-card">
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha">
+            </div>
+
+            <div class="form-group">
+                <label for="curso-filtro">Filtrar Curso:</label>
+                <select id="curso-filtro">
+                    <option value="1A">1º Año - A</option>
+                    <option value="2A">2º Año - A</option>
+                    <option value="3A">3º Año - A</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Tabla de Asistencia y Gestión -->
+        <div class="table-container">
+            <table id="tabla-asistencia">
+                <thead>
+                    <tr>
+                        <th>Legajo</th>
+                        <th>Alumno</th>
+                        <th>Estado de Asistencia</th>
+                        <th>Observaciones</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-alumnos">
+                    <!-- Filas cargadas dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Botón de Guardar Asistencia -->
+        <div class="actions">
+            <button id="btn-guardar-asistencia" class="btn-primary">Guardar Asistencia del Día</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
